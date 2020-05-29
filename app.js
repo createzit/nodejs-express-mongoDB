@@ -1,14 +1,19 @@
 const rect = require('./rectangle.js')
 
 function solveRect(l,w){
-    console.log(`Solving for rectangle with dimensions ${l}, ${w}`);
 
-    if (l <= 0 || w <= 0){
-        console.log(`Rectangle dimensions should be greater than zero.  The value passed in were: ${l}, ${w}`)
-    } else {
-        console.log(`Area of Rectangle: ${rect.area(l,w)}`);
-        console.log(`Perimeter for rectangle: ${rect.perimeter(l,w)}`)
-    }
+        console.log(`Solving for rectangle with dimensions ${l}, ${w}`);
+
+    rect(l, w, (err, rectangle) => {
+        if(err) {
+            console.log('ERROR:', err.message);
+        
+        } else {
+            console.log(`Area of Rectangle with dimensions ${l}, ${w} is : ${rectangle.area()}`);
+            console.log(`Perimeter for rectangle with dimensions ${l}, ${w} is : ${rectangle.perimeter(l,w)}`)
+        }
+    });
+    console.log('This statement is logged after the call to rect()');
 }
 
 solveRect(2,4)
